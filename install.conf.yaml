@@ -1,0 +1,51 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ["~"]
+
+- link:
+    # Runtime manager
+    ~/.asdf:
+      force: true
+      path: asdf/.asdf
+    ~/.tool-versions:
+      force: true
+      path: asdf/.tool-versions
+
+    # Shell
+    ~/.aliases: shell/.aliases
+    ~/.functions: shell/.functions
+    ~/.zshrc:
+      force: true
+      path: shell/.zshrc
+    ~/.bashrc: shell/.bashrc
+    ~/.tmux.conf: shell/.tmux.conf
+
+    # Version control
+    ~/.gitconfig:
+      force: true
+      path: git/.gitconfig
+
+- create:
+    # Editors
+    - ~/.vim/undo-history
+
+# Initial shell commands when running ./install.
+- shell:
+    - description: update submodules
+      command: "git submodule update --init --recursive"
+      stdout: true
+      stdin: true
+      stderr: true
+    - description: update asdf plugins
+      command: "asdf plugin-update --all"
+      stdout: true
+      stdin: true
+      stderr: true
+    - description: ensure tmux configs are applied for existing tmux sessions
+      command: "tmux source-file ~/.tmux.conf"
+      stdout: true
+      stdin: true
+      stderr: true
