@@ -1,1 +1,0 @@
-# Bash is no longer the default in MacOS.
