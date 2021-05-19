@@ -102,9 +102,8 @@ source $ZSH/oh-my-zsh.sh
 
 PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[green]%}Location: %~%{$reset_color%}$(git_prompt_info) '
 
-[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/rkstar/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/rkstar/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
+alias configure='git pull && update && bin/rake dev:create_apps && echo "Shop.first.beta.enable(:inbox_in_admin) | bin/rails c && restart && exit'
