@@ -106,4 +106,4 @@ PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[green]%}Location: %
 autoload -U promptinit; promptinit
 prompt spaceship
 
-alias configure='git pull && update && bin/rake dev:create_apps && echo "Shop.first.beta.enable(:inbox_in_admin) | bin/rails c && restart && exit'
+alias configure='git pull && update && bin/rake dev:create_apps && echo "Shop.first.beta.enable(:inbox_in_admin)" | bin/rails c && restart && exit'
